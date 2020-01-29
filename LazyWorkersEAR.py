@@ -511,7 +511,7 @@ for i in range(megaSwarmSize): #the threshold is for walking
     
     
 # superSwarm.evolve(200)  #with maximum number of generations
-# superSwarm.nextGeneration()
+superSwarm.nextGeneration()
 
 
 

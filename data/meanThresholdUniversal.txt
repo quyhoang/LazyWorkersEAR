@@ -1,1 +1,9 @@
 
+Condition: Swarm size = 10, Mega Swarm Size = 2
+Grid Size = 10*10
+Allowed lifetime of algae = 200, Enargy Availability = 50.0%
+algaeAppearanceRate = 0.01, maxStep = 10
+Eharvest = 15, Edetect = 0, Emove = 20, initialEnergy = 1000
+EupThreshold = 2500000, Ethreshold = 0 
+
+megaDistGen1 = [0, 5, 6, 9, 13, 15, 18, 20, 26, 26, 14, 18, 22, 26, 28, 30, 30, 32, 36, 37]
