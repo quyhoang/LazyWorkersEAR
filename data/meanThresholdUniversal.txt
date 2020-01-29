@@ -1,3 +1,1 @@
-Condition: Swarm size = 100, Mega Swarm Size = 20
-Grid Size = 15*15
-Allowed lifetime of algae = 200, Enargy Availability = 50.0%
+

@@ -1,15 +1,11 @@
 """
-16Jan20
-Genetic Algorithm
-The swam laziness is in walking behavior
-The threshold is for walking. A random number is used to compare with the walking threshold. Agents always report if detect algae.
-If the threshold is to0 high, the agents do not move -> fail.
-If the threshold is too low, agents always move and lose energy for walking.
-There will be no upper limit for energy (the upper limit is very high) - later we can introduce the effect of an upper limit
+Determining optimal level of laziness using GA
 
-Two fitness function
-Final 
-Threshold sequence is sorted.
+Kou Hideki
+Python 3.7, Spyder 4.0.1
+Final version
+Last modified 30Jan2020
+
 """
 
 # from setting import* #parameters
@@ -17,17 +13,18 @@ Threshold sequence is sorted.
 # import pdb #debug with set_trace()
 # import copy #copy list
 # import csv #export data
-import concurrent.futures #parallel computing
+
 
 #Calculation
 from math import *
 import numpy as np
 import statistics as stat
+import concurrent.futures #parallel computing
+
 
 import random
 import time
 start = time.perf_counter()
-
 random.seed(time.time())
 
 #Visualization
@@ -40,7 +37,6 @@ plt.style.use('seaborn-pastel')
 
 #Utilize GPU
 # from numba import jit, cuda
-
 #Parallel processing with multi-core CPU
 # import multiprocessing as mp
 # pool = mp.Pool(mp.cpu_count())
@@ -111,6 +107,10 @@ meanThreshold = open("./data/meanThresholdUniversal.txt",'a')
 print(f'Condition: Swarm size = {swarmSize}, Mega Swarm Size = {megaSwarmSize}', file = meanThreshold)
 print(f'Grid Size = {universalHeight}*{universalWidth}', file = meanThreshold)
 print(f'Allowed lifetime of algae = {maxLifeTimeAlgae}, Enargy Availability = {EnergyAvailablePercentage/10}%', file = meanThreshold)
+print(f'algaeAppearanceRate = {algaeAppearanceRate}, maxStep = {maxStep}',file = meanThreshold)
+print(f'Eharvest = {Eharvest}, Edetect = {Edetect}, Emove = {Emove}, initialEnergy = {initialEnergy}',file = meanThreshold)
+print(f'EupThreshold = {EupThreshold}, Ethreshold = {Ethreshold} \n', file = meanThreshold)
+
 
 #%% =============================================================================
 # SWARM CLASS
@@ -510,7 +510,6 @@ for i in range(megaSwarmSize): #the threshold is for walking
     superSwarm.megaSwarm[i].resetModel() #this set new thresholds to agents
     
     
-# superSwarm.megaSwarm[1].threshold = [150 for _ in range(swarmSize)] #group of swarms
 # superSwarm.evolve(200)  #with maximum number of generations
 # superSwarm.nextGeneration()
 
@@ -530,10 +529,13 @@ print(f'Elapsed time: {round(finish-start,2)}s')
 
 
 
-# initialize git repository directly from IPython command line (Spyder 4)
-!git init
-!git add .
-!git commit -m "Completed code"
-!git remote add origin https://github.com/quyhoang/LazyWorkersEAR.git
-!git push -u origin master
+
+# =============================================================================
+# # initialize git repository directly from IPython command line (Spyder 4)
+# !git init
+# !git add .
+# !git commit -m "Completed code"
+# !git remote add origin https://github.com/quyhoang/LazyWorkersEAR.git
+# !git push -u origin master
+# =============================================================================
 
