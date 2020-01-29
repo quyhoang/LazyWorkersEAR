@@ -65,8 +65,8 @@ from mesa.space import MultiGrid #allow multiple robot on a cell
 # =============================================================================
 # SWARM and SPACE
 # =============================================================================
-swarmSize = 10 #number of individuals in each swarm
-megaSwarmSize = 5 #number of swarms
+swarmSize = 100 #number of individuals in each swarm
+megaSwarmSize = 20 #number of swarms
 
 universalHeight = 15
 universalWidth = 15
@@ -100,7 +100,7 @@ bestFitQueueLength = 10 #best fitnesses are saved in a queue
 nTrials = 500 #number of trials to get averate effective operational time
 nTrials2 = 1
 
-maxStep = 10 #total steps, used in cumulative fitness functions
+maxStep = 100_000 #total steps, used in cumulative fitness functions
 
 fitness = open("./data/fitnessUniversal.txt",'a')
 meanFitness = open("./data/meanFitnessUniversal.txt",'a')
