@@ -1,1 +1,7 @@
-
+Condition: Swarm size = 100, Mega Swarm Size = 20
+Grid Size = 15*15
+Allowed lifetime of algae = 200, Enargy Availability = 50.0%
+Condition: Swarm size = 10, Mega Swarm Size = 5
+Grid Size = 15*15
+Allowed lifetime of algae = 200, Enargy Availability = 50.0%
+megaDistGen1 = [1, 8, 8, 10, 13, 13, 19, 23, 25, 25, 16, 26, 29, 30, 30, 31, 33, 34, 34, 38, 22, 22, 32, 32, 34, 35, 39, 41, 47, 48, 32, 34, 35, 41, 42, 48, 48, 51, 52, 59, 42, 43, 48, 54, 56, 57, 60, 60, 65, 70]

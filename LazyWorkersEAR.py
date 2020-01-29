@@ -54,8 +54,7 @@ from mesa.space import MultiGrid #allow multiple robot on a cell
 
 
 
-#%% =============================================================================
-# GENERAL SETTING
+#%% GENERAL SETTING
 # =============================================================================
 #
 #random.seed(a=None, version=2)
@@ -66,8 +65,8 @@ from mesa.space import MultiGrid #allow multiple robot on a cell
 # =============================================================================
 # SWARM and SPACE
 # =============================================================================
-swarmSize = 100 #number of individuals in each swarm
-megaSwarmSize = 20 #number of swarms
+swarmSize = 10 #number of individuals in each swarm
+megaSwarmSize = 5 #number of swarms
 
 universalHeight = 15
 universalWidth = 15
@@ -101,7 +100,7 @@ bestFitQueueLength = 10 #best fitnesses are saved in a queue
 nTrials = 500 #number of trials to get averate effective operational time
 nTrials2 = 1
 
-maxStep = 10_000 #total steps, used in cumulative fitness functions
+maxStep = 10 #total steps, used in cumulative fitness functions
 
 fitness = open("./data/fitnessUniversal.txt",'a')
 meanFitness = open("./data/meanFitnessUniversal.txt",'a')
@@ -112,8 +111,7 @@ print(f'Condition: Swarm size = {swarmSize}, Mega Swarm Size = {megaSwarmSize}',
 print(f'Grid Size = {universalHeight}*{universalWidth}', file = meanThreshold)
 print(f'Allowed lifetime of algae = {maxLifeTimeAlgae}, Enargy Availability = {EnergyAvailablePercentage/10}%', file = meanThreshold)
 
-#%% =============================================================================
-# SWARM CLASS
+#%% SWARM CLASS
 # =============================================================================
 
 class MoniModel(Model):   
@@ -422,7 +420,6 @@ class MegaModel:
 #             fit.append(result)
 # =============================================================================
         
-        # print()
         print(fit)
         if self.bestFitQueuePointer == bestFitQueueLength-1:
             self.bestFitQueuePointer = 0
@@ -489,8 +486,7 @@ class MegaModel:
                 
         
 
-#%% =============================================================================
-# EVOLUTION     
+#%% EVOLUTION     
 # =============================================================================
 
 
@@ -518,22 +514,47 @@ superSwarm.nextGeneration()
 
 
 
-#%%
+#%% Clean up
 meanThreshold.close()
 fitness.close()
 meanFitness.close()
 threshold.close()
-plt.close("all")
+
 
 finish = time.perf_counter()
 print(f'Elapsed time: {round(finish-start,2)}s')
 
 
+#%% Animation
+# =============================================================================
+# 
+# fig = plt.figure()
+# def animate(i):
+#     superSwarm.nextGeneration()
+#     flattenGenes = superSwarm.megaSwarm[superSwarm.sortedFitness[0]].threshold
+# #    flattenGenes = [j for swarm in superSwarm.megaSwarm for j in swarm.threshold]
+#     plt.cla()
+#     plt.hist(flattenGenes)
+#     plt.axis([0, swarmSize, 0, swarmSize])
+#     plt.xlabel('Threshold values')
+#     plt.ylabel('Frequency')
+#     
+# ani = animation.FuncAnimation(fig, animate, interval=5)
+# plt.show()
+# plt.close("all")
+# =============================================================================
 
-# initialize git repository directly from IPython command line (Spyder 4)
-!git init
-!git add .
-!git commit -m "Completed code"
-!git remote add origin https://github.com/quyhoang/LazyWorkersEAR.git
-!git push -u origin master
 
+
+
+
+#%% Git
+# =============================================================================
+# # initialize git repository directly from IPython command line (Spyder 4)
+# !git init
+# !git add .
+# !git commit -m "Completed code"
+# !git remote add origin https://github.com/quyhoang/LazyWorkersEAR.git
+# !git push -u origin master
+# !git revert a5186f7b29de2db3f2b34cfd61e3949e21735a4d #revert to stable version
+# =============================================================================
